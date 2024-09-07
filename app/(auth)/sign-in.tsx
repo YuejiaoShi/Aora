@@ -35,7 +35,6 @@ const SignIn = () => {
               setForm({ ...form, password: text })
             }
             otherStyles="mt-6"
-            keyboardType="email-address"
           />
         </View>
       </ScrollView>
