@@ -5,7 +5,7 @@ import {
   TextInputProps,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 interface CustomFormFieldProps {
   title: string;
   value: string;
@@ -22,6 +22,8 @@ const CustomFormField: React.FC<CustomFormFieldProps> = ({
   otherStyles,
   keyboardType = "default",
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <View className={`space-y-2 ${otherStyles}`}>
       <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
@@ -30,6 +32,9 @@ const CustomFormField: React.FC<CustomFormFieldProps> = ({
           className="flex-1 text-white font-psemibold text-base"
           value={value}
           placeholder={placeholder}
+          placeholderTextColor="#7B7B8B"
+          onChangeText={handleChange}
+          secureTextEntry={title === "Password" && !showPassword}
         ></TextInput>
       </View>
     </View>
