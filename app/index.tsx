@@ -2,7 +2,7 @@ import { Link, router } from "expo-router";
 import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { images } from "../constants";
-import CustomButton from "@/components/CustomButton";
+import Button from "@/components/Button";
 
 export default function App() {
   return (
@@ -34,7 +34,7 @@ export default function App() {
             Where Creativity Meets Innovation: Embark on a Journey of Limitless
             Exploration with Aora
           </Text>
-          <CustomButton
+          <Button
             title="Continue with Email"
             handlePress={() => router.push("/sign-in")}
             containerStyles="w-full mt-7"

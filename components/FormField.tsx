@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { icons } from "@/constants";
 
-interface CustomFormFieldProps {
+interface FormFieldProps {
   title: string;
   value: string;
   placeholder: string;
@@ -19,7 +19,7 @@ interface CustomFormFieldProps {
   keyboardType?: TextInputProps["keyboardType"];
 }
 
-const CustomFormField: React.FC<CustomFormFieldProps> = ({
+const FormField: React.FC<FormFieldProps> = ({
   title,
   value,
   placeholder,
@@ -55,6 +55,4 @@ const CustomFormField: React.FC<CustomFormFieldProps> = ({
   );
 };
 
-export default CustomFormField;
-
-const styles = StyleSheet.create({});
+export default FormField;

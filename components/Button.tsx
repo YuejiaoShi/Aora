@@ -1,7 +1,7 @@
 import { TouchableOpacity, Text, View } from "react-native";
 import React from "react";
 
-interface CustomButtonProps {
+interface ButtonProps {
   title: string;
   handlePress: () => void;
   containerStyles?: string;
@@ -9,7 +9,7 @@ interface CustomButtonProps {
   isLoading?: boolean;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   title,
   handlePress,
   containerStyles,
@@ -31,4 +31,4 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   );
 };
 
-export default CustomButton;
+export default Button;

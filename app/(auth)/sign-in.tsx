@@ -2,8 +2,8 @@ import { Image, ScrollView, Text, View } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
-import CustomFormField from "@/components/CustomFormField";
-import CustomButton from "@/components/CustomButton";
+import FormField from "@/components/FormField";
+import Button from "@/components/Button";
 
 const SignIn = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -21,7 +21,7 @@ const SignIn = () => {
           <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
             Log in to Aora
           </Text>
-          <CustomFormField
+          <FormField
             title="Email"
             value={form.email}
             placeholder="Email"
@@ -29,7 +29,7 @@ const SignIn = () => {
             otherStyles="mt-6"
             keyboardType="email-address"
           />
-          <CustomFormField
+          <FormField
             title="Password"
             placeholder="Password"
             value={form.password}
@@ -38,11 +38,11 @@ const SignIn = () => {
             }
             otherStyles="mt-6"
           />
-          <CustomButton
+          <Button
             title="Sign In"
             handlePress={handleSubmit}
             containerStyles="mt-6"
-          ></CustomButton>
+          ></Button>
         </View>
       </ScrollView>
     </SafeAreaView>
