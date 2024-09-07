@@ -1,11 +1,15 @@
 import {
+  Image,
   StyleSheet,
   Text,
   TextInput,
   TextInputProps,
+  TouchableOpacity,
   View,
 } from "react-native";
 import React, { useState } from "react";
+import { icons } from "@/constants";
+
 interface CustomFormFieldProps {
   title: string;
   value: string;
@@ -14,6 +18,7 @@ interface CustomFormFieldProps {
   otherStyles?: string;
   keyboardType?: TextInputProps["keyboardType"];
 }
+
 const CustomFormField: React.FC<CustomFormFieldProps> = ({
   title,
   value,
@@ -35,7 +40,16 @@ const CustomFormField: React.FC<CustomFormFieldProps> = ({
           placeholderTextColor="#7B7B8B"
           onChangeText={handleChange}
           secureTextEntry={title === "Password" && !showPassword}
-        ></TextInput>
+        />
+        {title === "Password" && (
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <Image
+              source={showPassword ? icons.eyeHide : icons.eye}
+              className="w-6 h-6"
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
