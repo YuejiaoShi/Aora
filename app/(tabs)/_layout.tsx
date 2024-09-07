@@ -21,6 +21,7 @@ const TabIcon: React.FC<TabIconProps> = ({ icon, color, name, focused }) => {
       />
       <Text
         className={`${focused ? "font-psemibold" : "font-pregutar"} text-xs`}
+        style={{ color: color }}
       >
         {name}
       </Text>
@@ -33,6 +34,14 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
+        tabBarActiveTintColor: "#FFA001",
+        tabBarInactiveTintColor: "#CDCDE0",
+        tabBarStyle: {
+          backgroundColor: "#161622",
+          borderTopWidth: 1,
+          borderTopColor: "#232533",
+          height: 84,
+        },
       }}
     >
       <Tabs.Screen
