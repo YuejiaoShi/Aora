@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
 import CustomFormField from "@/components/CustomFormField";
+import CustomButton from "@/components/CustomButton";
 
 const SignIn = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const handleSubmit = () => {};
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -36,6 +38,11 @@ const SignIn = () => {
             }
             otherStyles="mt-6"
           />
+          <CustomButton
+            title="Sign In"
+            handlePress={handleSubmit}
+            containerStyles="mt-6"
+          ></CustomButton>
         </View>
       </ScrollView>
     </SafeAreaView>
