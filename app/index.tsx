@@ -13,6 +13,11 @@ export default function App() {
             className="w-[130px] h-[84px]"
             resizeMode="contain"
           />
+          <Image
+            source={images.cards}
+            className="max-w-[380px] h-[300px]"
+            resizeMode="contain"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
