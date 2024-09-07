@@ -28,7 +28,7 @@ const SignIn = () => {
             keyboardType="email-address"
           />
           <CustomFormField
-            title="password"
+            title="Password"
             placeholder="Password"
             value={form.password}
             handleChange={(text: string) =>
