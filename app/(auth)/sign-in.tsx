@@ -7,6 +7,8 @@ import Button from "@/components/Button";
 
 const SignIn = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const [isSubmiting, setIsSubmiting] = useState(false);
+
   const handleSubmit = () => {};
 
   return (
@@ -42,6 +44,7 @@ const SignIn = () => {
             title="Sign In"
             handlePress={handleSubmit}
             containerStyles="mt-6"
+            isLoading={isSubmiting}
           ></Button>
         </View>
       </ScrollView>
