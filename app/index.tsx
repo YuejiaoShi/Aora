@@ -2,6 +2,7 @@ import { Link } from "expo-router";
 import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { images } from "../constants";
+import CustomButton from "@/components/CustomButton";
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
             Where Creativity Meets Innovation: Embark on a Journey of Limitless
             Exploration with Aora
           </Text>
+          <CustomButton />
         </View>
       </ScrollView>
     </SafeAreaView>
