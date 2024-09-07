@@ -1,5 +1,9 @@
 import { Tabs } from "expo-router";
 import React from "react";
+import { Image, View } from "react-native";
+import { icons } from "../../constants";
+
+
 
 export default function TabLayout() {
   return (
@@ -9,9 +13,13 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: "Home",
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+           
+          ),
         }}
       />
       <Tabs.Screen

@@ -7,8 +7,8 @@ export default function HomeScreen() {
     <View className="flex-1 items-center justify-center bg-white">
       <Text className="text-3xl font-pblack">VidAura</Text>
       <StatusBar style="auto" />
-      <Link href="/profile" className="text-blue-800">
-        Go to Profile
+      <Link href="/home" className="text-blue-800">
+        Go to Home
       </Link>
     </View>
   );
