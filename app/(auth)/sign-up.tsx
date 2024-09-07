@@ -16,11 +16,11 @@ const SignUp = () => {
       Alert.alert('Error', "Please fill in all fields");
       return;
     }
-  
+
     setIsSubmitting(true);
-  
+
     try {
-      const result = await createUser(form.username,form.email,form.password);
+      const result = await createUser(form.email, form.password, form.username);
 
       router.replace('/home')
     } catch (error) {
@@ -30,7 +30,7 @@ const SignUp = () => {
       setIsSubmitting(false);
     }
   };
-  
+
 
   return (
     <SafeAreaView className="bg-primary h-full">
