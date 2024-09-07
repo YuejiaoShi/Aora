@@ -22,7 +22,18 @@ const SignIn = () => {
           <CustomFormField
             title="Email"
             value={form.email}
+            placeholder="Email"
             handleChange={(text: string) => setForm({ ...form, email: text })}
+            otherStyles="mt-6"
+            keyboardType="email-address"
+          />
+          <CustomFormField
+            title="password"
+            placeholder="Password"
+            value={form.password}
+            handleChange={(text: string) =>
+              setForm({ ...form, password: text })
+            }
             otherStyles="mt-6"
             keyboardType="email-address"
           />
