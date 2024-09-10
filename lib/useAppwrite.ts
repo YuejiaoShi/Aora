@@ -17,6 +17,8 @@ const useAppwrite = (callback: () => Promise<any>) => {
     }
   };
 
+  console.log(data);
+
   useEffect(() => {
     fetchData();
   }, []);
