@@ -17,7 +17,7 @@ const Home = () => {
         renderItem={({ item }) => (
           <Text className="text-white">{item.title}</Text>
         )}
-        ListHeaderComponent={
+        ListHeaderComponent={() => (
           <View className="my-6 px-4 space-y-6">
             <View className="justify-between items-start flex-row mb-6">
               <View>
@@ -38,14 +38,15 @@ const Home = () => {
             </View>
 
             <SearchBar placeholder="Search for a video topic..." />
+
             <View>
-              <Text className="text-sm text-gray-100 text-lg font-pregular">
+              <Text className="text-gray-100 text-lg font-pregular">
                 Latest Videos
               </Text>
               <Trending posts={dummyVideos} />
             </View>
           </View>
-        }
+        )}
         ListEmptyComponent={() => (
           <EmptyState
             title="No video found"
