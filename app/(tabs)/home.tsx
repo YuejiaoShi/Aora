@@ -5,15 +5,38 @@ import {
   View,
   Image,
   RefreshControl,
+  Alert,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
 import SearchBar from "@/components/SearchBar";
 import Trending from "@/components/Trending";
 import EmptyState from "@/components/EmptyState";
+import { getAllPosts } from "@/lib/appwrite";
 
 const Home = () => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const res = await getAllPosts();
+        setData(res);
+      } catch (error: any) {
+        Alert.alert("Error", error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(data);
+
   const [refreshing, setIsRefreshing] = useState(false);
   const onRefresh = async () => {
     setIsRefreshing(true);
