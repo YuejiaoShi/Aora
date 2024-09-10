@@ -13,6 +13,7 @@ const Trending: React.FC<TrendingProps> = ({ posts }) => {
       renderItem={({ item }) => (
         <Text className="text-white">{item.title}</Text>
       )}
+      horizontal
     />
   );
 };
