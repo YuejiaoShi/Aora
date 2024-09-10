@@ -15,11 +15,8 @@ import Trending from "@/components/Trending";
 import EmptyState from "@/components/EmptyState";
 import { getAllPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
-
-export interface Post {
-  id: string;
-  title: string;
-}
+import VideoCard from "@/components/VideoCard";
+import { Post } from "@/types/types";
 
 const Home = () => {
   const { data: postsData, refetch } = useAppwrite(getAllPosts);
@@ -42,10 +39,8 @@ const Home = () => {
     <SafeAreaView className="bg-primary h-full">
       <FlatList
         data={posts}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <Text className="text-white">{item.title}</Text>
-        )}
+        keyExtractor={(item) => item.$id}
+        renderItem={({ item }) => <VideoCard />}
         ListHeaderComponent={() => (
           <View className="my-6 px-4 space-y-6">
             <View className="justify-between items-start flex-row mb-6">
