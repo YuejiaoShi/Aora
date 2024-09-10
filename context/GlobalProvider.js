@@ -1,3 +1,4 @@
+import { getCurrentUser } from "@/lib/appwrite";
 import React, {
   createContext,
   useContext,
@@ -20,6 +21,18 @@ export const GlobalProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = (useState < string) | (null > null);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    getCurrentUser.then((res) => {
+      if (res) {
+        setIsLoggedIn(true);
+        setUser(res);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    });
+  }, []);
 
   return (
     <GlobalContext.Provider
