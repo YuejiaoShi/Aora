@@ -5,6 +5,7 @@ import {
   Avatars,
   Databases,
   Storage,
+  Query,
 } from "react-native-appwrite";
 
 export const appwriteConfig = {
@@ -81,6 +82,27 @@ export async function signIn(email: string, password: string) {
     const session = await account.createEmailSession(email, password);
 
     return session;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
+
+// Get current user
+export async function getCurrentUser() {
+  try {
+    const currentAccount = await account.get();
+
+    if (!currentAccount) throw Error;
+
+    const currentUser = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", currentAccount.$id)]
+    );
+
+    if (!currentUser) throw Error;
+
+    return currentUser.documents[0];
   } catch (error: any) {
     throw new Error(error);
   }
