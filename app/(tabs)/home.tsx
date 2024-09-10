@@ -39,7 +39,7 @@ const Home = () => {
               </View>
             </View>
 
-            <SearchBar />
+            <SearchBar placeholder="Search for a video topic..." />
             <View>
               <Text className="text-sm text-gray-100 text-lg font-pregular">
                 Latest Videos
