@@ -13,7 +13,7 @@ const SignUp = () => {
 
   const handleSubmit = async () => {
     if (!form.username || !form.email || !form.password) {
-      Alert.alert('Error', "Please fill in all fields");
+      Alert.alert("Error", "Please fill in all fields");
       return;
     }
 
@@ -22,15 +22,14 @@ const SignUp = () => {
     try {
       const result = await createUser(form.email, form.password, form.username);
 
-      router.replace('/home')
+      router.replace("/home");
     } catch (error) {
-      const errorMessage = (error as Error).message || 'Unknown error occurred';
-      Alert.alert('Error', errorMessage);
+      const errorMessage = (error as Error).message || "Unknown error occurred";
+      Alert.alert("Error", errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
-
 
   return (
     <SafeAreaView className="bg-primary h-full">
