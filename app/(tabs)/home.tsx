@@ -14,33 +14,16 @@ import SearchBar from "@/components/SearchBar";
 import Trending from "@/components/Trending";
 import EmptyState from "@/components/EmptyState";
 import { getAllPosts } from "@/lib/appwrite";
+import useAppwrite from "@/lib/useAppwrite";
 
 const Home = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const res = await getAllPosts();
-        setData(res);
-      } catch (error: any) {
-        Alert.alert("Error", error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  console.log(data);
+  const { data: posts, refetch } = useAppwrite(getAllPosts);
 
   const [refreshing, setIsRefreshing] = useState(false);
+
   const onRefresh = async () => {
     setIsRefreshing(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await refetch();
     setIsRefreshing(false);
   };
 
