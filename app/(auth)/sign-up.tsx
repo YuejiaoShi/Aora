@@ -14,7 +14,7 @@ const SignUp = () => {
   const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const handleSubmit = async () => {
-    if (!form.username || !form.email || !form.password) {
+    if (form.username === "" || form.email === "" || form.password === "") {
       Alert.alert("Error", "Please fill in all fields");
       return;
     }
