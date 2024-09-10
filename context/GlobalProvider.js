@@ -19,12 +19,13 @@ export const useGlobalContext = () => {
 
 const GlobalProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = (useState < string) | (null > null);
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getCurrentUser
-      .then((res) => {
+    const fetchUser = async () => {
+      try {
+        const res = await getCurrentUser();
         if (res) {
           setIsLoggedIn(true);
           setUser(res);
@@ -32,9 +33,14 @@ const GlobalProvider = ({ children }) => {
           setIsLoggedIn(false);
           setUser(null);
         }
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUser();
   }, []);
 
   return (
