@@ -7,10 +7,12 @@ import Button from "@/components/Button";
 import { Link, router } from "expo-router";
 import { Alert } from "react-native";
 import { signIn } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 const SignIn = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const handleSubmit = async () => {
     if (form.email === "" || form.password === "") {
@@ -22,6 +24,9 @@ const SignIn = () => {
 
     try {
       const signInResult = await signIn(form.email, form.password);
+      setUser(signInResult);
+      setIsLoggedIn(true);
+      Alert.alert("Success", "Logged in successfully");
 
       router.replace("/home");
     } catch (error) {
