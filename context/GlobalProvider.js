@@ -17,7 +17,7 @@ export const useGlobalContext = () => {
   return context;
 };
 
-export const GlobalProvider = ({ children }) => {
+const GlobalProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = (useState < string) | (null > null);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,3 +52,4 @@ export const GlobalProvider = ({ children }) => {
     </GlobalContext.Provider>
   );
 };
+export default GlobalProvider;
