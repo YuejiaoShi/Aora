@@ -1,6 +1,7 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { images } from "@/constants";
 
 const Home = () => {
   const dummyData = [
@@ -27,6 +28,13 @@ const Home = () => {
                 <Text className="text-2xl font-psemibold text-white">
                   Yuejiao
                 </Text>
+              </View>
+              <View className="mt-1.5">
+                <Image
+                  source={images.logoSmall}
+                  resizeMode="contain"
+                  className="w-10 h-10"
+                />
               </View>
             </View>
           </View>
