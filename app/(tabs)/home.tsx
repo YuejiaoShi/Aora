@@ -3,6 +3,7 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
 import SearchBar from "@/components/SearchBar";
+import Trending from "@/components/Trending";
 
 const Home = () => {
   const dummyData = [
@@ -11,6 +12,11 @@ const Home = () => {
     { id: "3", title: "Item 3" },
   ];
 
+  const dummyVideos = [
+    { id: "1", title: "Video 1" },
+    { id: "2", title: "Video 2" },
+    { id: "3", title: "Video 3" },
+  ];
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -44,6 +50,7 @@ const Home = () => {
               <Text className="text-sm text-gray-100 text-lg font-pregular">
                 Latest Videos
               </Text>
+              <Trending posts={dummyVideos} />
             </View>
           </View>
         }
