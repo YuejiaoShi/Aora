@@ -1,5 +1,12 @@
-import { FlatList, StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  RefreshControl,
+} from "react-native";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
 import SearchBar from "@/components/SearchBar";
@@ -7,8 +14,24 @@ import Trending from "@/components/Trending";
 import EmptyState from "@/components/EmptyState";
 
 const Home = () => {
-  const dummyData: ArrayLike<any> | null | undefined = [];
-  const dummyVideos: never[] = [];
+  const [refreshing, setIsRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setIsRefreshing(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsRefreshing(false);
+  };
+
+  const dummyData = [
+    { id: "1", title: "Item 1" },
+    { id: "2", title: "Item 2" },
+    { id: "3", title: "Item 3" },
+  ];
+
+  const dummyVideos = [
+    { id: "1", title: "Video 1" },
+    { id: "2", title: "Video 2" },
+    { id: "3", title: "Video 3" },
+  ];
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -53,6 +76,9 @@ const Home = () => {
             subtitle="Be the first to create a video"
           />
         )}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </SafeAreaView>
   );
