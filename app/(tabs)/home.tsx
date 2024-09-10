@@ -50,7 +50,7 @@ const Home = () => {
         ListEmptyComponent={() => (
           <EmptyState
             title="No video found"
-            subtitle="Try searching for something else"
+            subtitle="Be the first to create a video"
           />
         )}
       />
