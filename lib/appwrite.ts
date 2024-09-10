@@ -30,8 +30,19 @@ const storage = new Storage(client);
 const avatars = new Avatars(client);
 const databases = new Databases(client);
 
+interface NewUser {
+  accountId: string;
+  email: string;
+  username: string;
+  avatar: string;
+}
+
 // Register user
-export async function createUser(email, password, username) {
+export async function createUser(
+  email: string,
+  password: string,
+  username: string
+): Promise<NewUser | null> {
   try {
     const newAccount = await account.create(
       ID.unique(),
@@ -59,18 +70,18 @@ export async function createUser(email, password, username) {
     );
 
     return newUser;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
 
 // Sign In
-export async function signIn(email, password) {
+export async function signIn(email: string, password: string) {
   try {
     const session = await account.createEmailSession(email, password);
 
     return session;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
