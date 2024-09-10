@@ -16,8 +16,14 @@ import EmptyState from "@/components/EmptyState";
 import { getAllPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 
+export interface Post {
+  id: string;
+  title: string;
+}
+
 const Home = () => {
-  const { data: posts, refetch } = useAppwrite(getAllPosts);
+  const { data: postsData, refetch } = useAppwrite(getAllPosts);
+  const posts = postsData as Post[];
 
   const [refreshing, setIsRefreshing] = useState(false);
 
@@ -27,12 +33,6 @@ const Home = () => {
     setIsRefreshing(false);
   };
 
-  const dummyData = [
-    { id: "1", title: "Item 1" },
-    { id: "2", title: "Item 2" },
-    { id: "3", title: "Item 3" },
-  ];
-
   const dummyVideos = [
     { id: "1", title: "Video 1" },
     { id: "2", title: "Video 2" },
@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
-        data={dummyData}
+        data={posts}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Text className="text-white">{item.title}</Text>
