@@ -3,13 +3,8 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-, "lib/appwrite.js"  ]
+  "include": ["**/*.ts", "**/*.tsx", "lib/appwrite.ts"]
 }
