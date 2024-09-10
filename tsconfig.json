@@ -6,5 +6,10 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "lib/appwrite.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/appwrite.ts",
+    "context/GlobalProvider.js"
+  ]
 }
