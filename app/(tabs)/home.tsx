@@ -4,19 +4,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
 import SearchBar from "@/components/SearchBar";
 import Trending from "@/components/Trending";
+import EmptyState from "@/components/EmptyState";
 
 const Home = () => {
-  const dummyData = [
-    { id: "1", title: "Item 1" },
-    { id: "2", title: "Item 2" },
-    { id: "3", title: "Item 3" },
-  ];
-
-  const dummyVideos = [
-    { id: "1", title: "Video 1" },
-    { id: "2", title: "Video 2" },
-    { id: "3", title: "Video 3" },
-  ];
+  const dummyData: ArrayLike<any> | null | undefined = [];
+  const dummyVideos: never[] = [];
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -54,6 +46,12 @@ const Home = () => {
             </View>
           </View>
         }
+        ListEmptyComponent={() => (
+          <EmptyState
+            title="No video found"
+            subtitle="Try searching for something else"
+          />
+        )}
       />
     </SafeAreaView>
   );
