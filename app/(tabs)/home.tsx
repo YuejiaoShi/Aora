@@ -38,7 +38,13 @@ const Home = () => {
                 />
               </View>
             </View>
+
             <SearchBar />
+            <View>
+              <Text className="text-sm text-gray-100 text-lg font-pregular">
+                Latest Videos
+              </Text>
+            </View>
           </View>
         }
       />
