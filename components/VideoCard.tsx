@@ -62,6 +62,11 @@ const VideoCard: React.FC<VideoCardProps> = ({
             className="w-full h-full rounded-xl mt-3"
             resizeMode="cover"
           />
+          <Image
+            source={icons.play}
+            className="w-14 h-14 absolute"
+            resizeMode="contain"
+          />
         </TouchableOpacity>
       )}
     </View>
