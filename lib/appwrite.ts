@@ -109,7 +109,7 @@ export async function getCurrentUser() {
 }
 
 // Get all posts
-const getAllPosts = async () => {
+export const getAllPosts = async () => {
   try {
     const posts = await databases.listDocuments(
       appwriteConfig.databaseId,
