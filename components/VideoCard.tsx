@@ -1,5 +1,5 @@
-import { Image, Text, View } from "react-native";
-import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
 import { icons } from "@/constants";
 
 interface VideoCardProps {
@@ -24,6 +24,8 @@ const VideoCard: React.FC<VideoCardProps> = ({
     creator: { username, avatar },
   },
 }) => {
+  const [playing, setPlaying] = useState(false);
+
   return (
     <View className="flex-col items-center px-4 mb-14">
       <View className="flex-row gap-3 items-start">
@@ -51,6 +53,17 @@ const VideoCard: React.FC<VideoCardProps> = ({
           <Image source={icons.menu} className="w-5 h-5" resizeMode="contain" />
         </View>
       </View>
+      {playing ? (
+        <Text>Playing</Text>
+      ) : (
+        <TouchableOpacity className="w-full h-60 rounded-xl mt-3 relative justify-center items-center">
+          <Image
+            source={{ uri: thumbnail }}
+            className="w-full h-full rounded-xl mt-3"
+            resizeMode="cover"
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
