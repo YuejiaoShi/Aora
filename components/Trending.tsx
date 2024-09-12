@@ -37,12 +37,12 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
       ) : (
         <TouchableOpacity
           onPress={() => setPlay(true)}
-          className="relative justify-center items-center"
+          className="relative flex justify-center items-center"
           activeOpacity={0.7}
         >
           <ImageBackground
             source={{ uri: item.thumbnail }}
-            className="w-40 h-40 rounded-2xl"
+            className="w-52 h-72 rounded-[33px] my-5 overflow-hidden shadow-lg shadow-black/40"
             resizeMode="cover"
           />
 
