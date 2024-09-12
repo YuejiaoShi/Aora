@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Post } from "@/types/types";
 import { icons } from "@/constants";
-import { Video, ResizeMode } from "expo-av";
+import { Video, ResizeMode, AVPlaybackStatus } from "expo-av";
 
 interface TrendingProps {
   posts: Post[];
@@ -34,7 +34,18 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
       className="mr-5 text-white"
     >
       {play ? (
-        <Video />
+        <Video
+          source={{ uri: item.video }}
+          className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
+          resizeMode={ResizeMode.CONTAIN}
+          useNativeControls
+          shouldPlay
+          onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
+            if (status.isLoaded && !status.isPlaying) {
+              setPlay(false);
+            }
+          }}
+        />
       ) : (
         <TouchableOpacity
           onPress={() => setPlay(true)}
