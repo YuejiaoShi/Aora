@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Post } from "@/types/types";
 import { icons } from "@/constants";
+import { Video, ResizeMode } from "expo-av";
 
 interface TrendingProps {
   posts: Post[];
@@ -33,7 +34,7 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
       className="mr-5 text-white"
     >
       {play ? (
-        <Text className="text-white">playing</Text>
+        <Video />
       ) : (
         <TouchableOpacity
           onPress={() => setPlay(true)}
