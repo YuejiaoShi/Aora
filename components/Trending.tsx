@@ -15,6 +15,10 @@ import { WebView } from "react-native-webview";
 interface TrendingProps {
   posts: Post[];
 }
+interface TrendingItemProps {
+  activeItem: string | Post;
+  item: Post;
+}
 
 const zoomIn = {
   0: { transform: [{ scale: 0.9 }] },
@@ -30,7 +34,7 @@ const isEmbeddedVideo = (url: string) => {
   return url.includes("youtube.com") || url.includes("vimeo.com");
 };
 
-const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
+const TrendingItem: React.FC<TrendingItemProps> = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
 
   const isVimeo = isEmbeddedVideo(item.video);
