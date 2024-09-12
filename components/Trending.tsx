@@ -28,7 +28,7 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
   return (
     <Animatable.View
-      animation={activeItem === item.$id ? zoomIn : zoomOut}
+      animation={activeItem.$id === item.$id ? zoomIn : zoomOut}
       duration={500}
       className="mr-5 text-white"
     >
