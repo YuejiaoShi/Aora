@@ -10,6 +10,7 @@ import {
 import { Post } from "@/types/types";
 import { icons } from "@/constants";
 import { Video, ResizeMode, AVPlaybackStatus } from "expo-av";
+import { WebView } from "react-native-webview";
 
 interface TrendingProps {
   posts: Post[];
@@ -25,8 +26,15 @@ const zoomOut = {
   1: { transform: [{ scale: 0.9 }] },
 };
 
+const isEmbeddedVideo = (url: string) => {
+  return url.includes("youtube.com") || url.includes("vimeo.com");
+};
+
 const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
+
+  const isVimeo = isEmbeddedVideo(item.video);
+
   return (
     <Animatable.View
       animation={activeItem === item.$id ? zoomIn : zoomOut}
@@ -34,21 +42,28 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
       className="mr-5 text-white"
     >
       {play ? (
-        <Video
-          source={{ uri: item.video }}
-          className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
-          resizeMode={ResizeMode.CONTAIN}
-          useNativeControls
-          shouldPlay
-          onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-            console.log(status);
-            if (!status.isLoaded) {
-              console.error("Playback status error:", status.error);
-            } else if (!status.isPlaying) {
-              setPlay(false);
-            }
-          }}
-        />
+        isVimeo ? (
+          <WebView
+            source={{ uri: item.video }}
+            className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
+          />
+        ) : (
+          <Video
+            source={{ uri: item.video }}
+            className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
+            resizeMode={ResizeMode.CONTAIN}
+            useNativeControls
+            shouldPlay
+            onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
+              console.log(status);
+              if (!status.isLoaded) {
+                console.error("Playback status error:", status.error);
+              } else if (!status.isPlaying) {
+                setPlay(false);
+              }
+            }}
+          />
+        )
       ) : (
         <TouchableOpacity
           onPress={() => setPlay(true)}
