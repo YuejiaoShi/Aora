@@ -28,7 +28,7 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
   return (
     <Animatable.View
-      animation={activeItem.$id === item.$id ? zoomIn : zoomOut}
+      animation={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
       className="mr-5 text-white"
     >
@@ -58,7 +58,17 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
 };
 
 const Trending: React.FC<TrendingProps> = ({ posts }) => {
-  const [activeItem, setActiveItem] = useState(posts[0]);
+  const [activeItem, setActiveItem] = useState<string | Post>(posts[0]);
+
+  const viewableItemsChanges = ({
+    viewableItems,
+  }: {
+    viewableItems: Array<{ key: string }>;
+  }) => {
+    if (viewableItems.length > 0) {
+      setActiveItem(viewableItems[0].key);
+    }
+  };
 
   return (
     <FlatList
@@ -67,6 +77,9 @@ const Trending: React.FC<TrendingProps> = ({ posts }) => {
       renderItem={({ item }) => (
         <TrendingItem activeItem={activeItem} item={item} />
       )}
+      onViewableItemsChanged={viewableItemsChanges}
+      viewabilityConfig={{ itemVisiblePercentThreshold: 70 }}
+      contentOffset={{ x: 170, y: 0 }}
       horizontal
     />
   );
