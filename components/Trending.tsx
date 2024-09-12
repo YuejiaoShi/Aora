@@ -4,9 +4,11 @@ import {
   FlatList,
   ImageBackground,
   Text,
+  Image,
   TouchableOpacity,
 } from "react-native";
 import { Post } from "@/types/types";
+import { icons } from "@/constants";
 
 interface TrendingProps {
   posts: Post[];
@@ -42,6 +44,12 @@ const TrendingItem: React.FC<any> = ({ activeItem, item }) => {
             source={{ uri: item.thumbnail }}
             className="w-40 h-40 rounded-2xl"
             resizeMode="cover"
+          />
+
+          <Image
+            source={icons.play}
+            className="w-12 h-12 absolute"
+            resizeMode="contain"
           />
         </TouchableOpacity>
       )}
