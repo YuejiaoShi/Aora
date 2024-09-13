@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
-import { Video } from "expo-av";
+import { AVPlaybackStatus, ResizeMode, Video } from "expo-av";
 import WebView from "react-native-webview";
 import { icons } from "../constants";
 
-const VideoCard = ({ title, creator, avatar, thumbnail, video }) => {
+interface VideoCardProps {
+  title: string;
+  creator: string;
+  avatar: string;
+  thumbnail: string;
+  video: string;
+}
+
+const VideoCard: React.FC<VideoCardProps> = ({
+  title,
+  creator,
+  avatar,
+  thumbnail,
+  video,
+}) => {
   const [play, setPlay] = useState(false);
 
   const isEmbedded =
@@ -52,10 +66,12 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video }) => {
               source={{ uri: video }}
               className="w-full h-full"
               useNativeControls
-              resizeMode="cover"
+              resizeMode={ResizeMode.COVER}
               shouldPlay
-              onPlaybackStatusUpdate={(status) => {
-                if (status.didJustFinish) {
+              onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
+                if (!status.isLoaded) {
+                  console.error("Playback status error:", status.error);
+                } else if (!status.isPlaying) {
                   setPlay(false);
                 }
               }}
