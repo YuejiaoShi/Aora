@@ -11,5 +11,5 @@
     "**/*.tsx",
     "lib/appwrite.ts",
     "context/GlobalProvider.js"
-, "components/VideoCard.jsx"  ]
+  ]
 }
