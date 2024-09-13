@@ -59,7 +59,6 @@ const TrendingItem: React.FC<TrendingItemProps> = ({ activeItem, item }) => {
             useNativeControls
             shouldPlay
             onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-              console.log(status);
               if (!status.isLoaded) {
                 console.error("Playback status error:", status.error);
               } else if (!status.isPlaying) {
