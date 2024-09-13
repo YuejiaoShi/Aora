@@ -44,16 +44,11 @@ const Home = () => {
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <VideoCard
-            video={{
-              title: item.title,
-              thumbnail: item.thumbnail,
-              videoURL: item.video,
-              prompt: item.prompt,
-              creator: {
-                username: item.creator.username,
-                avatar: item.creator.avatar,
-              },
-            }}
+            title={item.title}
+            thumbnail={item.thumbnail}
+            video={item.video}
+            creator={item.creator.username}
+            avatar={item.creator.avatar}
           />
         )}
         ListHeaderComponent={() => (
