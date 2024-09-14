@@ -1,6 +1,6 @@
 import { icons } from "@/constants";
 import { router, usePathname } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   Image,
@@ -19,12 +19,14 @@ const CustomSearchBar: React.FC<CustomSearchBarProps> = ({ initialQuery }) => {
   const pathName = usePathname();
   const [query, setQuery] = useState("");
 
-  if (initialQuery !== undefined && Array.isArray(initialQuery)) {
-    setQuery(initialQuery.join(" "));
-  } else if (initialQuery !== undefined) {
-    setQuery(initialQuery);
-  }
-
+  useEffect(() => {
+    if (initialQuery !== undefined && Array.isArray(initialQuery)) {
+      setQuery(initialQuery.join(" "));
+    } else if (initialQuery !== undefined) {
+      setQuery(initialQuery);
+    }
+  }, [initialQuery]);
+  
   return (
     <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center space-x-4">
       <TextInput
