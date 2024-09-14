@@ -1,7 +1,8 @@
 import { icons } from "@/constants";
-import { usePathname } from "expo-router";
+import { router, usePathname } from "expo-router";
 import React, { useState } from "react";
 import {
+  Alert,
   Image,
   Text,
   TextInput,
@@ -23,7 +24,21 @@ const SearchBar: React.FC = ({}) => {
         placeholderTextColor="#CDCDE0"
         onChangeText={(e) => setQuery(e)}
       />
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          if (!query) {
+            return Alert.alert(
+              "Missing Query",
+              "Please enter input to search for a video"
+            );
+          }
+          if (pathName.startsWith("/search")) {
+            router.setParams({ query });
+          } else {
+            router.push(`/search/${query}`);
+          }
+        }}
+      >
         <Image source={icons.search} className="w-6 h-6" />
       </TouchableOpacity>
     </View>
