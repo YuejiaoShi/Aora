@@ -4,10 +4,10 @@ import { useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Search = () => {
-  const query = useLocalSearchParams();
+  const { query } = useLocalSearchParams();
   return (
     <SafeAreaView className="bg-primary h-full">
-      <Text className="text-white text-2xl font-pmedium">Search</Text>
+      <Text className="text-white text-2xl font-pmedium">{query}</Text>
     </SafeAreaView>
   );
 };
