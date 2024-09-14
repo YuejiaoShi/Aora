@@ -11,9 +11,13 @@ import {
   View,
 } from "react-native";
 
-const CustomSearchBar: React.FC = ({}) => {
+interface CustomSearchBarProps {
+  initialQuery?: string;
+}
+
+const CustomSearchBar: React.FC<CustomSearchBarProps> = ({ initialQuery }) => {
   const pathName = usePathname();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery || "");
 
   return (
     <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center space-x-4">
