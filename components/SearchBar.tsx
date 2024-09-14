@@ -31,8 +31,7 @@ const SearchBar: React.FC = ({}) => {
               "Missing Query",
               "Please enter input to search for a video"
             );
-          }
-          if (pathName.startsWith("/search")) {
+          } else if (pathName.startsWith("/search")) {
             router.setParams({ query });
           } else {
             router.push(`/search/${query}`);
