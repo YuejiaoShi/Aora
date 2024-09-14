@@ -141,7 +141,7 @@ export async function searchPosts(query: string) {
     const posts = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.videoCollectionId,
-      [Query.search("title"), query]
+      [Query.search("title", query)]
     );
 
     return posts.documents;
