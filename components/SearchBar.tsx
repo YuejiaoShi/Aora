@@ -1,5 +1,6 @@
 import { icons } from "@/constants";
-import React from "react";
+import { usePathname } from "expo-router";
+import React, { useState } from "react";
 import {
   Image,
   Text,
@@ -26,11 +27,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
   otherStyles,
   keyboardType = "default",
 }) => {
+  const pathName = usePathname();
+  const [query, setQuery] = useState("");
+
   return (
     <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center space-x-4">
       <TextInput
         className="mt-0.5 text-base text-white flex-1 font-pregular"
-        value={value}
+        value={query}
         placeholder={placeholder}
         placeholderTextColor="#7B7B8B"
         onChangeText={handleChange}
