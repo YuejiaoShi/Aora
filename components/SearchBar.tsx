@@ -12,12 +12,18 @@ import {
 } from "react-native";
 
 interface CustomSearchBarProps {
-  initialQuery?: string;
+  initialQuery?: string | string[];
 }
 
 const CustomSearchBar: React.FC<CustomSearchBarProps> = ({ initialQuery }) => {
   const pathName = usePathname();
-  const [query, setQuery] = useState(initialQuery || "");
+  const [query, setQuery] = useState("");
+
+  if (initialQuery !== undefined && Array.isArray(initialQuery)) {
+    setQuery(initialQuery.join(" "));
+  } else if (initialQuery !== undefined) {
+    setQuery(initialQuery);
+  }
 
   return (
     <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center space-x-4">
