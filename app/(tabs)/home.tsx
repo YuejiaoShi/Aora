@@ -71,7 +71,7 @@ const Home = () => {
               </View>
             </View>
 
-            <SearchBar placeholder="Search for a video topic..." />
+            <SearchBar />
 
             <View>
               <Text className="text-gray-100 text-lg font-pregular">

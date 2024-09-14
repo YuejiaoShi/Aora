@@ -10,23 +10,7 @@ import {
   View,
 } from "react-native";
 
-interface SearchBarProps {
-  title?: string;
-  value?: string;
-  placeholder?: string;
-  handleChange?: (text: string) => void;
-  otherStyles?: string;
-  keyboardType?: TextInputProps["keyboardType"];
-}
-
-const SearchBar: React.FC<SearchBarProps> = ({
-  title,
-  value,
-  placeholder,
-  handleChange,
-  otherStyles,
-  keyboardType = "default",
-}) => {
+const SearchBar: React.FC = ({}) => {
   const pathName = usePathname();
   const [query, setQuery] = useState("");
 
@@ -35,9 +19,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
       <TextInput
         className="mt-0.5 text-base text-white flex-1 font-pregular"
         value={query}
-        placeholder={placeholder}
-        placeholderTextColor="#7B7B8B"
-        onChangeText={handleChange}
+        placeholder="Search for a video topic..."
+        placeholderTextColor="#CDCDE0"
+        onChangeText={(e) => setQuery(e)}
       />
       <TouchableOpacity>
         <Image source={icons.search} className="w-6 h-6" />
