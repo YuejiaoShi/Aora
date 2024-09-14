@@ -38,7 +38,7 @@ const SearchBar: React.FC = ({}) => {
           }
         }}
       >
-        <Image source={icons.search} className="w-6 h-6" />
+        <Image source={icons.search} className="w-6 h-6" resizeMode="contain" />
       </TouchableOpacity>
     </View>
   );
