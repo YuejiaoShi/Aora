@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 
-const SearchBar: React.FC = ({}) => {
+const CustomSearchBar: React.FC = ({}) => {
   const pathName = usePathname();
   const [query, setQuery] = useState("");
 
@@ -44,4 +44,4 @@ const SearchBar: React.FC = ({}) => {
   );
 };
 
-export default SearchBar;
+export default CustomSearchBar;
