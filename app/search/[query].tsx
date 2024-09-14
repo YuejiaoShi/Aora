@@ -19,10 +19,10 @@ import VideoCard from "@/components/VideoCard";
 import { Post } from "@/types/types";
 import { useLocalSearchParams } from "expo-router";
 
-const SearchBar = async () => {
+const Search = () => {
   const { query } = useLocalSearchParams();
 
-  const { data: posts, refetch } = useAppwrite(() =>
+  const { data: posts, refetch } = useAppwrite<Post[]>(() =>
     searchPosts(query as string)
   );
 
@@ -68,4 +68,4 @@ const SearchBar = async () => {
   );
 };
 
-export default SearchBar;
+export default Search;
