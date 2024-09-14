@@ -134,3 +134,18 @@ export const getLatestPosts = async () => {
     throw new Error(error);
   }
 };
+
+// Search for videos posts
+export async function searchPosts(query: string) {
+  try {
+    const posts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.videoCollectionId,
+      [Query.search("title"), query]
+    );
+
+    return posts.documents;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
