@@ -10,13 +10,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
-import SearchBar from "@/components/SearchBar";
 import Trending from "@/components/Trending";
 import EmptyState from "@/components/EmptyState";
 import { getAllPosts, getLatestPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import VideoCard from "@/components/VideoCard";
 import { Post } from "@/types/types";
+import CustomSearchBar from "@/components/SearchBar";
 
 const Home = () => {
   const { data: postsData, refetch } = useAppwrite(getAllPosts);
@@ -71,7 +71,7 @@ const Home = () => {
               </View>
             </View>
 
-            <SearchBar />
+            <CustomSearchBar />
 
             <View>
               <Text className="text-gray-100 text-lg font-pregular">
