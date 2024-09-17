@@ -13,6 +13,10 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 const Profile = () => {
   const { user, setUser,setIsLoggedIn } = useGlobalContext();
 
+  const { data: posts } = useAppwrite<Post[]>(() =>
+    getUserPosts(user.$id as string)
+  );
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
