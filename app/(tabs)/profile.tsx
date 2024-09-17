@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomSearchBar from "@/components/SearchBar";
@@ -9,13 +9,12 @@ import VideoCard from "@/components/VideoCard";
 import { Post } from "@/types/types";
 import { useLocalSearchParams } from "expo-router";
 import { useGlobalContext } from "@/context/GlobalProvider";
+import { icons } from "@/constants";
 
 const Profile = () => {
-  const { user, setUser,setIsLoggedIn } = useGlobalContext();
+  const { user, setUser, setIsLoggedIn } = useGlobalContext();
 
-  const { data: posts } = useAppwrite<Post[]>(() =>
-    getUserPosts(user.$id as string)
-  );
+  const { data: posts } = useAppwrite<Post[]>(() => getUserPosts(user.$id));
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -32,18 +31,14 @@ const Profile = () => {
           />
         )}
         ListHeaderComponent={() => (
-          <View className="my-6 px-4">
-            <Text className="font-pmedium text-sm text-gray-100">
-              Search Results
-            </Text>
-
-            <Text className="text-2xl font-psemibold text-white">
-              {/* {query} */}
-            </Text>
-
-            <View className="mt-6 mb-8">
-              {/* <CustomSearchBar initialQuery={query} /> */}
-            </View>
+          <View className="mt-6 w-full px-4 justify-center items-center">
+            <TouchableOpacity>
+              <Image
+                source={icons.logout}
+                className="w-6 h-6"
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
           </View>
         )}
         ListEmptyComponent={() => (
