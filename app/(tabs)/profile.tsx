@@ -10,6 +10,7 @@ import { Post } from "@/types/types";
 import { useLocalSearchParams } from "expo-router";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { icons } from "@/constants";
+import InfoBox from "@/components/InfoBox";
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
@@ -55,6 +56,8 @@ const Profile = () => {
                 resizeMode="contain"
               />
             </View>
+
+            <InfoBox />
           </View>
         )}
         ListEmptyComponent={() => (
