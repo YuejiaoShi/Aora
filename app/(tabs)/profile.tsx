@@ -3,22 +3,15 @@ import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomSearchBar from "@/components/SearchBar";
 import EmptyState from "@/components/EmptyState";
-import { searchPosts } from "@/lib/appwrite";
+import { getUserPosts, searchPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import VideoCard from "@/components/VideoCard";
 import { Post } from "@/types/types";
 import { useLocalSearchParams } from "expo-router";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 const Profile = () => {
-  const { query } = useLocalSearchParams();
-
-  const { data: posts, refetch } = useAppwrite<Post[]>(() =>
-    searchPosts(query as string)
-  );
-
-  useEffect(() => {
-    refetch();
-  }, [query]);
+  const { user, setUser,setIsLoggedIn } = useGlobalContext();
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -40,10 +33,12 @@ const Profile = () => {
               Search Results
             </Text>
 
-            <Text className="text-2xl font-psemibold text-white">{query}</Text>
+            <Text className="text-2xl font-psemibold text-white">
+              {/* {query} */}
+            </Text>
 
             <View className="mt-6 mb-8">
-              <CustomSearchBar initialQuery={query} />
+              {/* <CustomSearchBar initialQuery={query} /> */}
             </View>
           </View>
         )}
