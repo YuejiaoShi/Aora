@@ -149,3 +149,18 @@ export async function searchPosts(query: string) {
     throw new Error(error);
   }
 }
+
+// Get user posts by user id
+export async function getUserPosts(userId: string) {
+  try {
+    const posts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.videoCollectionId,
+      [Query.equal("creator.accountId", userId)]
+    );
+
+    return posts.documents;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
