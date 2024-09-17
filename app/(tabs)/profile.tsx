@@ -16,6 +16,11 @@ const Profile = () => {
 
   const { data: posts } = useAppwrite<Post[]>(() => getUserPosts(user.$id));
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUser(null);
+  };
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -32,7 +37,10 @@ const Profile = () => {
         )}
         ListHeaderComponent={() => (
           <View className="mt-6 w-full px-4 justify-center items-center">
-            <TouchableOpacity>
+            <TouchableOpacity
+              className="w-4 items-end mb-10"
+              onPress={handleLogout}
+            >
               <Image
                 source={icons.logout}
                 className="w-6 h-6"
