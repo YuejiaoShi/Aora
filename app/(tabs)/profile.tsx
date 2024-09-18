@@ -57,7 +57,11 @@ const Profile = () => {
               />
             </View>
 
-            <InfoBox />
+            <InfoBox
+              title={user?.username}
+              containerStyles="mt-5"
+              titleStyles="text-lg"
+            />
           </View>
         )}
         ListEmptyComponent={() => (
