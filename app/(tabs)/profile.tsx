@@ -62,6 +62,18 @@ const Profile = () => {
               containerStyles="mt-5"
               titleStyles="text-lg"
             />
+            <View className="flex-row mt-5">
+              <InfoBox
+                title={user?.username}
+                containerStyles="mt-5"
+                titleStyles="text-lg"
+              />
+              <InfoBox
+                title={user?.username}
+                containerStyles="mt-5"
+                titleStyles="text-lg"
+              />
+            </View>
           </View>
         )}
         ListEmptyComponent={() => (
