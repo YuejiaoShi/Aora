@@ -37,9 +37,9 @@ const Profile = () => {
           />
         )}
         ListHeaderComponent={() => (
-          <View className="mt-6 w-full px-4 justify-center items-center">
+          <View className="mt-6 mb-12 w-full px-4 justify-center items-center">
             <TouchableOpacity
-              className="w-4 items-end mb-10"
+              className="w-full items-end mb-10"
               onPress={handleLogout}
             >
               <Image
@@ -53,7 +53,7 @@ const Profile = () => {
               <Image
                 source={{ uri: user?.avatar }}
                 className="w-[90%] h-[90%] rounded-lg"
-                resizeMode="contain"
+                resizeMode="cover"
               />
             </View>
 
@@ -66,14 +66,13 @@ const Profile = () => {
               <InfoBox
                 title={`${posts?.length || 0}`}
                 subtitle="Posts"
-                containerStyles="mt-5"
+                containerStyles="mr-10"
                 titleStyles="text-xl"
               />
               <InfoBox
                 title={"1.2k"}
                 subtitle="Followers"
-                containerStyles="mt-5"
-                titleStyles="text-lg"
+                titleStyles="text-xl"
               />
             </View>
           </View>
