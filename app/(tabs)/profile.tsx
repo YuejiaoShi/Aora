@@ -64,12 +64,14 @@ const Profile = () => {
             />
             <View className="flex-row mt-5">
               <InfoBox
-                title={user?.username}
+                title={posts?.length}
+                subtitle="Posts"
                 containerStyles="mt-5"
-                titleStyles="text-lg"
+                titleStyles="text-xl"
               />
               <InfoBox
-                title={user?.username}
+                title={"1.2k"}
+                subtitle="Followers"
                 containerStyles="mt-5"
                 titleStyles="text-lg"
               />
