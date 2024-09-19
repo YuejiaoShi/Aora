@@ -1,12 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from "react-native";
+import React from "react";
 
-const InfoBox = () => {
+interface InfoBoxProps {
+  title: string;
+  subtitle: string;
+  containerStyles?: string;
+  titleStyles?: string;
+}
+const InfoBox = ({
+  title,
+  subtitle,
+  containerStyles,
+  titleStyles,
+}: InfoBoxProps) => {
   return (
     <View>
       <Text>InfoBox</Text>
     </View>
-  )
-}
+  );
+};
 
-export default InfoBox
+export default InfoBox;
