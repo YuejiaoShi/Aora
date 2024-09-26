@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomSearchBar from "@/components/SearchBar";
 import EmptyState from "@/components/EmptyState";
-import { getUserPosts, searchPosts } from "@/lib/appwrite";
+import { getUserPosts, searchPosts, signOut } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import VideoCard from "@/components/VideoCard";
 import { Post } from "@/types/types";
@@ -17,9 +17,12 @@ const Profile = () => {
 
   const { data: posts } = useAppwrite<Post[]>(() => getUserPosts(user.$id));
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await signOut();
     setIsLoggedIn(false);
     setUser(null);
+
+    
   };
 
   return (
