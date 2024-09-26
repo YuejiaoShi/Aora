@@ -7,7 +7,7 @@ import { getUserPosts, searchPosts, signOut } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import VideoCard from "@/components/VideoCard";
 import { Post } from "@/types/types";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { icons } from "@/constants";
 import InfoBox from "@/components/InfoBox";
@@ -22,7 +22,7 @@ const Profile = () => {
     setIsLoggedIn(false);
     setUser(null);
 
-    
+    router.replace("/sign-in");
   };
 
   return (
