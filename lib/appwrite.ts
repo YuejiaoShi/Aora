@@ -164,3 +164,12 @@ export async function getUserPosts(userId: string) {
     throw new Error(error);
   }
 }
+// sign out
+export async function signOut() {
+  try {
+    const session = await account.deleteSession("current");
+    return session;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
