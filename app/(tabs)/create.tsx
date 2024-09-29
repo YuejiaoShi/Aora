@@ -40,7 +40,13 @@ const Create = () => {
           </Text>
           <TouchableOpacity>
             {form.video ? (
-              <Video />
+              <Video
+                source={{ uri: form.video }}
+                resizeMode={ResizeMode.COVER}
+                useNativeControls
+                isLooping
+                className="w-full h-40 px-4 rounded-2xl"
+              />
             ) : (
               <View className="w-full h-40 px-4 bg-black-100 rounded-2xl justify-center items-center">
                 <View className="w-14 h-14 border border-dashed border-secondary-100 justify-center items-center">
