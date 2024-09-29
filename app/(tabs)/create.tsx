@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   ScrollView,
   StyleSheet,
@@ -12,17 +13,50 @@ import FormField from "@/components/FormField";
 import { Video, ResizeMode } from "expo-av";
 import { icons } from "@/constants";
 import Button from "@/components/Button";
+import * as DocumentPicker from "expo-document-picker";
+
+interface DocumentPickerAsset {
+  uri: string;
+  name?: string;
+  size?: number;
+  type?: string;
+}
+
+interface FormState {
+  thumbnail: DocumentPickerAsset | null;
+  video: DocumentPickerAsset | null;
+  title: string;
+  prompt: string;
+}
 
 const Create = () => {
   const [upLoading, setUpLoading] = useState(false);
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormState>({
     title: "",
     video: null,
     thumbnail: null,
     prompt: "",
   });
 
-  const openPicker = async (selectedType: string) => {};
+  const openPicker = async (selectedType: string) => {
+    const result = await DocumentPicker.getDocumentAsync({
+      type:
+        selectedType === "image"
+          ? ["image/jpeg", "image/jpg", "image/png"]
+          : ["video/mp4", "video/gif", "video/mov"],
+    });
+    if (!result.canceled) {
+      if (selectedType === "image") {
+        setForm({ ...form, thumbnail: result.assets[0] });
+      } else if (selectedType === "video") {
+        setForm({ ...form, video: result.assets[0] });
+      } else {
+        setTimeout(() => {
+          Alert.alert("Document Picked!", JSON.stringify(result, null, 2));
+        }, 1000);
+      }
+    }
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -44,7 +78,7 @@ const Create = () => {
           <TouchableOpacity onPress={() => openPicker("video")}>
             {form.video ? (
               <Video
-                source={{ uri: form.video }}
+                source={{ uri: form.video.uri }}
                 resizeMode={ResizeMode.COVER}
                 useNativeControls
                 isLooping
@@ -71,7 +105,7 @@ const Create = () => {
           <TouchableOpacity onPress={() => openPicker("image")}>
             {form.thumbnail ? (
               <Image
-                source={{ uri: form.thumbnail }}
+                source={{ uri: form.thumbnail.uri }}
                 className="w-full h-64 rounded-2xl"
                 resizeMode="cover"
               />
