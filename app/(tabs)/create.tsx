@@ -11,6 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "@/components/FormField";
 import { Video, ResizeMode } from "expo-av";
 import { icons } from "@/constants";
+import Button from "@/components/Button";
 
 const Create = () => {
   const [upLoading, setUpLoading] = useState(false);
@@ -20,6 +21,8 @@ const Create = () => {
     thumbnail: null,
     prompt: "",
   });
+
+  const openPicker = async (selectedType: string) => {};
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -38,7 +41,7 @@ const Create = () => {
           <Text className="text-base text-gray-100 font-pmedium">
             Upload Video
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => openPicker("video")}>
             {form.video ? (
               <Video
                 source={{ uri: form.video }}
@@ -65,7 +68,7 @@ const Create = () => {
           <Text className="text-base text-gray-100 font-pmedium">
             Upload Thumbnail
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => openPicker("image")}>
             {form.thumbnail ? (
               <Image
                 source={{ uri: form.thumbnail }}
@@ -84,6 +87,20 @@ const Create = () => {
             )}
           </TouchableOpacity>
         </View>
+
+        <FormField
+          title="AI Prompt"
+          placeholder="AI prompt you used to generate this video"
+          value={form.prompt}
+          handleChange={(e) => setForm({ ...form, prompt: e })}
+          otherStyles="mt-7"
+        />
+        <Button
+          title="Submit & Publish"
+          handlePress={() => {}}
+          containerStyles="mt-7"
+          isLoading={upLoading}
+        />
       </ScrollView>
     </SafeAreaView>
   );
