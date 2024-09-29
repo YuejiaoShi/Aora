@@ -22,7 +22,7 @@ const Create = () => {
           placeholder="Enter your video title"
           value={form.title}
           handleChange={(e) => setForm({ ...form, title: e })}
-          otherStyles="mt-4"
+          otherStyles="mt-6"
         />
       </ScrollView>
     </SafeAreaView>
