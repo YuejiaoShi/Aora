@@ -14,6 +14,7 @@ import { Video, ResizeMode } from "expo-av";
 import { icons } from "@/constants";
 import Button from "@/components/Button";
 import * as DocumentPicker from "expo-document-picker";
+import { router } from "expo-router";
 
 interface DocumentPickerAsset {
   uri: string;
@@ -137,6 +138,21 @@ const Create = () => {
               return;
             }
             setUpLoading(true);
+            try {
+              
+              Alert.alert("Success", "Video created successfully");
+              router.push("/home");
+            } catch (error: any) {
+              Alert.alert("Error", error.message);
+            } finally {
+              setForm({
+                title: "",
+                video: null,
+                thumbnail: null,
+                prompt: "",
+              });
+              setUpLoading(false);
+            }
           }}
           containerStyles="mt-7"
           isLoading={upLoading}
