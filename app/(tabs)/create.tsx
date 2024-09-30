@@ -131,7 +131,13 @@ const Create = () => {
         />
         <Button
           title="Submit & Publish"
-          handlePress={() => {}}
+          handlePress={() => {
+            if (!form.title || !form.video || !form.thumbnail || !form.prompt) {
+              Alert.alert("Please fill all fields");
+              return;
+            }
+            setUpLoading(true);
+          }}
           containerStyles="mt-7"
           isLoading={upLoading}
         />
