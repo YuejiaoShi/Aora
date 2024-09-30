@@ -174,6 +174,26 @@ export async function signOut() {
   }
 }
 
+// Upload file
+export async function uploadFile(file: any, type: string) {
+  if (!file) return;
+
+  const { mimeType, ...rest } = file;
+  const asset = { type: mimeType, ...rest };
+
+  try {
+    const uploadedFile = await storage.createFile(
+      appwriteConfig.storageId,
+      ID.unique(),
+      asset
+    );
+
+    const fileUrl = await getFilePreview(uploadedFile.$id, type);
+    return fileUrl;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
 // Get File Preview
 export async function getFilePreview(fileId: string, type: string) {
   let fileUrl;
