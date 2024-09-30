@@ -1,3 +1,4 @@
+import { FormState } from "@/app/(tabs)/create";
 import {
   Client,
   ID,
@@ -217,6 +218,32 @@ export async function getFilePreview(fileId: string, type: string) {
     if (!fileUrl) throw Error;
 
     return fileUrl;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
+
+// Create Video
+export async function createVideo(form: FormState) {
+  try {
+    const [thumbnailUrl, videoUrl] = await Promise.all([
+      uploadFile(form.thumbnail, "image"),
+      uploadFile(form.video, "video"),
+    ]);
+
+    const newPost = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.videoCollectionId,
+      ID.unique(),
+      {
+        title: form.title,
+        thumbnail: thumbnailUrl,
+        video: videoUrl,
+        prompt: form.prompt,
+      }
+    );
+
+    return newPost;
   } catch (error: any) {
     throw new Error(error);
   }
