@@ -23,7 +23,7 @@ interface DocumentPickerAsset {
   type?: string;
 }
 
-interface FormState {
+export interface FormState {
   thumbnail: DocumentPickerAsset | null;
   video: DocumentPickerAsset | null;
   title: string;
@@ -139,7 +139,7 @@ const Create = () => {
             }
             setUpLoading(true);
             try {
-              
+
               Alert.alert("Success", "Video created successfully");
               router.push("/home");
             } catch (error: any) {
