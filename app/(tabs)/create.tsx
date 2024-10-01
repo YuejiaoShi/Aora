@@ -13,7 +13,7 @@ import FormField from "@/components/FormField";
 import { Video, ResizeMode } from "expo-av";
 import { icons } from "@/constants";
 import Button from "@/components/Button";
-import * as DocumentPicker from "expo-document-picker";
+import * as ImagePicker from "expo-image-picker";
 import { router } from "expo-router";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { createVideo } from "@/lib/appwrite";
@@ -45,11 +45,13 @@ const Create = () => {
   });
 
   const openPicker = async (selectedType: string) => {
-    const result = await DocumentPicker.getDocumentAsync({
-      type:
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes:
         selectedType === "image"
-          ? ["image/jpeg", "image/jpg", "image/png"]
-          : ["video/mp4", "video/gif", "video/mov"],
+          ? ImagePicker.MediaTypeOptions.Images
+          : ImagePicker.MediaTypeOptions.Videos,
+      aspect: [4, 3],
+      quality: 1,
     });
     if (!result.canceled) {
       if (selectedType === "image") {
