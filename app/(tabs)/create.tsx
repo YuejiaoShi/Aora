@@ -59,6 +59,28 @@ const Create = () => {
     }
   };
 
+  const handleSubmit = () => {
+    if (!form.title || !form.video || !form.thumbnail || !form.prompt) {
+      Alert.alert("Please fill all fields");
+      return;
+    }
+    setUpLoading(true);
+    try {
+      Alert.alert("Success", "Video created successfully");
+      router.push("/home");
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setForm({
+        title: "",
+        video: null,
+        thumbnail: null,
+        prompt: "",
+      });
+      setUpLoading(false);
+    }
+  };
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView className="px-4 my-6">
@@ -132,28 +154,7 @@ const Create = () => {
         />
         <Button
           title="Submit & Publish"
-          handlePress={() => {
-            if (!form.title || !form.video || !form.thumbnail || !form.prompt) {
-              Alert.alert("Please fill all fields");
-              return;
-            }
-            setUpLoading(true);
-            try {
-
-              Alert.alert("Success", "Video created successfully");
-              router.push("/home");
-            } catch (error: any) {
-              Alert.alert("Error", error.message);
-            } finally {
-              setForm({
-                title: "",
-                video: null,
-                thumbnail: null,
-                prompt: "",
-              });
-              setUpLoading(false);
-            }
-          }}
+          handlePress={handleSubmit}
           containerStyles="mt-7"
           isLoading={upLoading}
         />
