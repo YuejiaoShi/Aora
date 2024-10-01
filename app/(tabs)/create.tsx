@@ -15,6 +15,8 @@ import { icons } from "@/constants";
 import Button from "@/components/Button";
 import * as DocumentPicker from "expo-document-picker";
 import { router } from "expo-router";
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { createVideo } from "@/lib/appwrite";
 
 interface DocumentPickerAsset {
   uri: string;
@@ -28,15 +30,18 @@ export interface FormState {
   video: DocumentPickerAsset | null;
   title: string;
   prompt: string;
+  userId: string;
 }
 
 const Create = () => {
+  const { user } = useGlobalContext();
   const [upLoading, setUpLoading] = useState(false);
   const [form, setForm] = useState<FormState>({
     title: "",
     video: null,
     thumbnail: null,
     prompt: "",
+    userId: user.$id,
   });
 
   const openPicker = async (selectedType: string) => {
@@ -59,13 +64,15 @@ const Create = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!form.title || !form.video || !form.thumbnail || !form.prompt) {
       Alert.alert("Please fill all fields");
       return;
     }
     setUpLoading(true);
     try {
+      await createVideo({ ...form, userId: user.$id });
+
       Alert.alert("Success", "Video created successfully");
       router.push("/home");
     } catch (error: any) {
@@ -76,6 +83,7 @@ const Create = () => {
         video: null,
         thumbnail: null,
         prompt: "",
+        userId: user.$id,
       });
       setUpLoading(false);
     }
