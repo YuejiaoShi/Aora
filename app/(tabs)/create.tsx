@@ -56,10 +56,6 @@ const Create = () => {
         setForm({ ...form, thumbnail: result.assets[0] });
       } else if (selectedType === "video") {
         setForm({ ...form, video: result.assets[0] });
-      } else {
-        setTimeout(() => {
-          Alert.alert("Document Picked!", JSON.stringify(result, null, 2));
-        }, 1000);
       }
     }
   };
