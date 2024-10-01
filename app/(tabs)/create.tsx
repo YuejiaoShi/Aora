@@ -107,8 +107,6 @@ const Create = () => {
               <Video
                 source={{ uri: form.video.uri }}
                 resizeMode={ResizeMode.COVER}
-                useNativeControls
-                isLooping
                 className="w-full h-40 px-4 rounded-2xl"
               />
             ) : (
