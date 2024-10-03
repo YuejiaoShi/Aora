@@ -186,7 +186,6 @@ export async function uploadFile(file: any, type: string) {
     size: file.fileSize,
     uri: file.uri,
   };
-  console.log(asset);
 
   try {
     const uploadedFile = await storage.createFile(
@@ -194,7 +193,6 @@ export async function uploadFile(file: any, type: string) {
       ID.unique(),
       asset
     );
-    console.log(uploadedFile);
 
     const fileUrl = await getFilePreview(uploadedFile.$id, type);
     return fileUrl;
