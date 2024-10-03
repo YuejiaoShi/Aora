@@ -114,8 +114,7 @@ export const getAllPosts = async () => {
   try {
     const posts = await databases.listDocuments(
       appwriteConfig.databaseId,
-      appwriteConfig.videoCollectionId,
-      [Query.orderDesc("$createdAt")]
+      appwriteConfig.videoCollectionId
     );
     return posts.documents;
   } catch (error: any) {
@@ -180,8 +179,12 @@ export async function signOut() {
 export async function uploadFile(file: any, type: string) {
   if (!file) return;
 
-  const { mimeType, ...rest } = file;
-  const asset = { type: mimeType, ...rest };
+  const asset = {
+    name: file.fileName,
+    type: file.type,
+    size: file.fileSize,
+    uri: file.uri,
+  };
   console.log(asset);
 
   try {
@@ -243,6 +246,7 @@ export async function createVideo(form: FormState) {
         thumbnail: thumbnailUrl,
         video: videoUrl,
         prompt: form.prompt,
+        creator: form.userId,
       }
     );
 
