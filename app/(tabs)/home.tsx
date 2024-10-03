@@ -5,7 +5,6 @@ import {
   View,
   Image,
   RefreshControl,
-  Alert,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -32,11 +31,6 @@ const Home = () => {
     setIsRefreshing(false);
   };
 
-  const dummyVideos = [
-    { id: "1", title: "Video 1" },
-    { id: "2", title: "Video 2" },
-    { id: "3", title: "Video 3" },
-  ];
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
