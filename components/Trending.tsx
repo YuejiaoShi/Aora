@@ -6,6 +6,7 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { Post } from "@/types/types";
 import { icons } from "@/constants";
@@ -36,6 +37,7 @@ const isEmbeddedVideo = (url: string) => {
 
 const TrendingItem: React.FC<TrendingItemProps> = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
+  const [videoRef, setVideoRef] = useState<any>(null);
 
   const isVimeo = isEmbeddedVideo(item.video);
 
@@ -59,11 +61,23 @@ const TrendingItem: React.FC<TrendingItemProps> = ({ activeItem, item }) => {
             useNativeControls
             shouldPlay
             onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-              if (!status.isLoaded) {
-                console.error("Playback status error:", status.error);
-              } else if (!status.isPlaying) {
-                setPlay(false);
+              if (status.isLoaded) {
+                if (status.didJustFinish) {
+                  setPlay(false);
+                  videoRef?.setPositionAsync(0); // reset video position to the start
+                } else if (!status.isPlaying) {
+                }
+              } else {
+                if (status.error) {
+                  console.error("Playback status error:", status.error);
+                  setPlay(false);
+                }
               }
+            }}
+            onError={(error) => {
+              console.error("Failed to load video:", error);
+              Alert.alert("Error", "Failed to load video.");
+              setPlay(false);
             }}
           />
         )

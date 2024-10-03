@@ -20,6 +20,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
   video,
 }) => {
   const [play, setPlay] = useState(false);
+  const [videoRef, setVideoRef] = useState<any>(null);
 
   const isEmbedded =
     video.includes("youtube.com") || video.includes("vimeo.com");
@@ -69,14 +70,22 @@ const VideoCard: React.FC<VideoCardProps> = ({
               resizeMode={ResizeMode.COVER}
               shouldPlay
               onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-                if (!status.isLoaded) {
-                  console.error("Playback status error:", status.error);
-                } else if (!status.isPlaying) {
-                  setPlay(false);
+                if (status.isLoaded) {
+                  if (status.didJustFinish) {
+                    setPlay(false);
+                    videoRef?.setPositionAsync(0); // reset video position to the start
+                  } else if (!status.isPlaying) {
+                  }
+                } else {
+                  if (status.error) {
+                    console.error("Playback status error:", status.error);
+                    setPlay(false);
+                  }
                 }
               }}
               onError={(error) => {
                 console.error("Failed to load video:", error);
+                Alert.alert("Error", "Failed to load video.");
                 setPlay(false);
               }}
             />
