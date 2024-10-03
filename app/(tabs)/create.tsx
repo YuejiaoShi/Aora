@@ -30,7 +30,7 @@ export interface FormState {
   video: DocumentPickerAsset | null;
   title: string;
   prompt: string;
-  userId: string;
+  userId?: string;
 }
 
 const Create = () => {
@@ -41,7 +41,6 @@ const Create = () => {
     video: null,
     thumbnail: null,
     prompt: "",
-    userId: user.$id,
   });
 
   const openPicker = async (selectedType: string) => {
