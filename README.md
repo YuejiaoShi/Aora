@@ -8,11 +8,11 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ## Technologies and Libraries Used
 
-- **React Native**: Core framework for building cross-platform mobile applications.
-- **Expo**: A toolchain for streamlined React Native development.
-- **Appwrite**: Backend services for authentication, database, and file storage.
-- **Context API**: Manages global state for user data and authentication.
-- **TypeScript**: Ensures type safety and improves developer experience.
+- [<img alt="React Native" src="https://img.shields.io/badge/-React%20Native-61DAFB?style=flat-square&logo=react&logoColor=white" height="25">](https://reactnative.dev/) Core framework for building cross-platform mobile applications.
+- [<img alt="Expo" src="https://img.shields.io/badge/-Expo-000020?style=flat-square&logo=expo&logoColor=white" height="25">](https://expo.dev/) A toolchain for streamlined React Native development.
+- [<img alt="Appwrite" src="https://img.shields.io/badge/-Appwrite-F02E65?style=flat-square&logo=appwrite&logoColor=white" height="25">](https://appwrite.io/) Backend services for authentication, database, and file storage.
+- [<img alt="Context API" src="https://img.shields.io/badge/-Context%20API-20232A?style=flat-square&logo=react&logoColor=61DAFB" height="25">](https://reactjs.org/docs/context.html) Manages global state for user data and authentication.
+- [<img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" height="25">](https://www.typescriptlang.org/) Ensures type safety and improves developer experience.
 
 ---
 
