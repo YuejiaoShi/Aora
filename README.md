@@ -103,16 +103,3 @@ This is a video uploading platform designed for users to upload, manage, and sha
   - **Search**: Enables users to search for videos by title or creator.
 
 ---
-
-### 5. **Video Details Screen** (`VideoDetails.tsx`)
-
-- **Functionality**: Provides a detailed view of a selected video, showing the full video, title, description, and comments.
-- **Components Used**:
-
-  - `VideoPlayer`: Handles video playback.
-  - `CommentBox`: Allows users to view and add comments on the video.
-
-- **Features**:
-  - **Video Playback**: Users can play and pause the video.
-  - **Comments Section**: Enables users to read and add comments to the video.
-  - **Creator Info**: Shows details about the video creator, including their username and avatar.
