@@ -73,6 +73,10 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ### 3. **Profile Screen** (`Profile.tsx`)
 
+<div style="text-align: center;">
+  <img alt="Sign In Sign Up gif" src="./assets/gifs/Profile.gif" height="500">
+</div>
+
 - **Functionality**: Displays user's uploaded videos and profile information, with a log-out option.
 
 - **Features**:
