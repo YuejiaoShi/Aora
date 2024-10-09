@@ -59,7 +59,7 @@ This is a video uploading platform designed for users to upload, manage, and sha
 ### 2. **Home Screen** (`Home.tsx`)
 
 <div style="text-align: center;">
-  <img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="500">
+  <img alt="Sign In Sign Up gif" src="./assets/gifs/Home.gif" height="500">
 </div>
 
 - **Functionality**: Displays a feed of all the uploaded videos from various users.
