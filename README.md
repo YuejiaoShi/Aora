@@ -74,12 +74,14 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ---
 
-### 3. **Sign In Screen** (`SignIn.tsx`)
+### 3. **Sign In and Sign Up Screen** (`SignIn.tsx SignUp.tsx`)
+
+<img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="450">
 
 - **Functionality**: Allows users to log into the app using their email and password.
 - **Components Used**:
 
-  - `FormField`: For handling email and password input.
+  - `FormField`: For handling username, email and password input.
   - `Button`: A reusable button component for submitting the form.
 
 - **Features**:
