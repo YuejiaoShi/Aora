@@ -43,8 +43,16 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ### 1. **Sign In and Sign Up Screen** (`SignIn.tsx SignUp.tsx`)
 
-<div style="text-align: center;">
-  <img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="500">
+<div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+  <div style="text-align: center;">
+    <img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="500">
+    <p><strong>Sign In and Sign Up Screens</strong></p>
+  </div>
+  
+  <div style="text-align: center;">
+    <img alt="Sign Out gif" src="./assets/gifs/SignOut.gif" height="500">
+    <p><strong>Sign Out Screen</strong></p>
+  </div>
 </div>
 
 - **Functionality**: Allows users to log into the app using their email and password.
