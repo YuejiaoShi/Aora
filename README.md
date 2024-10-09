@@ -88,6 +88,10 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ### 4. **Create Video Screen** (`Create.tsx`)
 
+<div style="text-align: center;">
+  <img alt="Sign In Sign Up gif" src="./assets/gifs/Create.gif" height="500">
+</div>
+
 - **Functionality**: Allows users to upload a video with a corresponding thumbnail, title, and prompt.
 
 - **Features**:
