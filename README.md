@@ -41,20 +41,37 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ## App Structure
 
-### 1. **Create Video Screen** (`Create.tsx`)
+### 1. **Sign In and Sign Up Screen** (`SignIn.tsx SignUp.tsx`)
 
-- **Functionality**: Allows users to upload a video with a corresponding thumbnail, title, and prompt.
+<div style="text-align: center;">
+  <img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="500">
+</div>
+
+- **Functionality**: Allows users to log into the app using their email and password.
 
 - **Features**:
-  - **Video Upload**: Allows the user to upload a video from the device.
-  - **Thumbnail Selection**: Users can pick an image to serve as the video’s thumbnail.
-  - **AI Prompt**: Enables users to include a description or prompt they used to generate the content.
-  - **Validation**: Checks if all fields are filled before submission.
-  - **Submission**: Handles the video upload and navigates back to the home page upon success.
+  - **User Authentication**: Authenticates the user using Appwrite’s backend.
+  - **Form Validation**: Ensures both email and password fields are filled before submission.
+  - **Navigation**: Redirects authenticated users to the home screen.
 
 ---
 
-### 2. **Profile Screen** (`Profile.tsx`)
+### 2. **Home Screen** (`Home.tsx`)
+
+<div style="text-align: center;">
+  <img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="500">
+</div>
+
+- **Functionality**: Displays a feed of all the uploaded videos from various users.
+
+- **Features**:
+  - **Video Feed**: Shows a list of videos uploaded by different users.
+  - **Navigation to Details**: Clicking on a video navigates to a detailed view of the selected video.
+  - **Search**: Enables users to search for videos by title or creator.
+
+---
+
+### 3. **Profile Screen** (`Profile.tsx`)
 
 - **Functionality**: Displays user's uploaded videos and profile information, with a log-out option.
 
@@ -65,27 +82,15 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ---
 
-### 3. **Sign In and Sign Up Screen** (`SignIn.tsx SignUp.tsx`)
+### 4. **Create Video Screen** (`Create.tsx`)
 
-<div style="text-align: center;">
-  <img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="500">
-</div>
-- **Functionality**: Allows users to log into the app using their email and password.
+- **Functionality**: Allows users to upload a video with a corresponding thumbnail, title, and prompt.
 
 - **Features**:
-  - **User Authentication**: Authenticates the user using Appwrite’s backend.
-  - **Form Validation**: Ensures both email and password fields are filled before submission.
-  - **Navigation**: Redirects authenticated users to the home screen.
-
----
-
-### 4. **Home Screen** (`Home.tsx`)
-
-- **Functionality**: Displays a feed of all the uploaded videos from various users.
-
-- **Features**:
-  - **Video Feed**: Shows a list of videos uploaded by different users.
-  - **Navigation to Details**: Clicking on a video navigates to a detailed view of the selected video.
-  - **Search**: Enables users to search for videos by title or creator.
+  - **Video Upload**: Allows the user to upload a video from the device.
+  - **Thumbnail Selection**: Users can pick an image to serve as the video’s thumbnail.
+  - **AI Prompt**: Enables users to include a description or prompt they used to generate the content.
+  - **Validation**: Checks if all fields are filled before submission.
+  - **Submission**: Handles the video upload and navigates back to the home page upon success.
 
 ---
