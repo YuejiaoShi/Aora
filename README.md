@@ -44,11 +44,6 @@ This is a video uploading platform designed for users to upload, manage, and sha
 ### 1. **Create Video Screen** (`Create.tsx`)
 
 - **Functionality**: Allows users to upload a video with a corresponding thumbnail, title, and prompt.
-- **Components Used**:
-
-  - `FormField`: Handles input for title and prompt.
-  - `ImagePicker`: Used for picking both images (thumbnails) and videos.
-  - `Button`: A reusable button component for submitting the form.
 
 - **Features**:
   - **Video Upload**: Allows the user to upload a video from the device.
@@ -62,10 +57,6 @@ This is a video uploading platform designed for users to upload, manage, and sha
 ### 2. **Profile Screen** (`Profile.tsx`)
 
 - **Functionality**: Displays user's uploaded videos and profile information, with a log-out option.
-- **Components Used**:
-
-  - `FlatList`: Used for rendering the list of uploaded videos.
-  - `InfoBox`: Displays user's profile information, such as the number of posts and followers.
 
 - **Features**:
   - **User Information**: Displays the user's avatar, username, and a count of their posts and followers.
@@ -76,13 +67,9 @@ This is a video uploading platform designed for users to upload, manage, and sha
 
 ### 3. **Sign In and Sign Up Screen** (`SignIn.tsx SignUp.tsx`)
 
-<img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="450">
+<img alt="Sign In Sign Up gif" src="./assets/gifs/SignupSignin.gif" height="500">
 
 - **Functionality**: Allows users to log into the app using their email and password.
-- **Components Used**:
-
-  - `FormField`: For handling username, email and password input.
-  - `Button`: A reusable button component for submitting the form.
 
 - **Features**:
   - **User Authentication**: Authenticates the user using Appwrite’s backend.
@@ -94,10 +81,6 @@ This is a video uploading platform designed for users to upload, manage, and sha
 ### 4. **Home Screen** (`Home.tsx`)
 
 - **Functionality**: Displays a feed of all the uploaded videos from various users.
-- **Components Used**:
-
-  - `FlatList`: Renders a list of video posts.
-  - `VideoCard`: A custom component to display video information like title, thumbnail, and creator details.
 
 - **Features**:
   - **Video Feed**: Shows a list of videos uploaded by different users.
