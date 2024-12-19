@@ -13,6 +13,7 @@ This is a video uploading platform designed for users to upload, manage, and sha
 - [<img alt="Appwrite" src="https://img.shields.io/badge/-Appwrite-F02E65?style=flat-square&logo=appwrite&logoColor=white" height="25">](https://appwrite.io/) Backend services for authentication, database, and file storage.
 - [<img alt="Context API" src="https://img.shields.io/badge/-Context%20API-20232A?style=flat-square&logo=react&logoColor=61DAFB" height="25">](https://reactjs.org/docs/context.html) Manages global state for user data and authentication.
 - [<img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" height="25">](https://www.typescriptlang.org/) Ensures type safety and improves developer experience.
+- [<img alt="TailwindCSS" src="https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" height="25">](https://tailwindcss.com/) Utility-first CSS framework for rapid, custom UI development. 
 
 ---
 
