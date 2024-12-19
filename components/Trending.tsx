@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import * as Animatable from "react-native-animatable";
 import {
   FlatList,
@@ -107,15 +107,14 @@ const TrendingItem: React.FC<TrendingItemProps> = ({ activeItem, item }) => {
 const Trending: React.FC<TrendingProps> = ({ posts }) => {
   const [activeItem, setActiveItem] = useState<string | Post>(posts[0]);
 
-  const viewableItemsChanges = ({
-    viewableItems,
-  }: {
-    viewableItems: Array<{ key: string }>;
-  }) => {
-    if (viewableItems.length > 0) {
-      setActiveItem(viewableItems[0].key);
-    }
-  };
+  const viewableItemsChanges = useCallback(
+    ({ viewableItems }: { viewableItems: Array<{ key: string }> }) => {
+      if (viewableItems.length > 0) {
+        setActiveItem(viewableItems[0].key);
+      }
+    },
+    []
+  );
 
   return (
     <FlatList

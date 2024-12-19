@@ -6,7 +6,7 @@ import {
   Image,
   RefreshControl,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
 import Trending from "@/components/Trending";
@@ -25,11 +25,11 @@ const Home = () => {
 
   const [refreshing, setIsRefreshing] = useState(false);
 
-  const onRefresh = async () => {
+  const onRefresh = useCallback(async () => {
     setIsRefreshing(true);
     await refetch();
     setIsRefreshing(false);
-  };
+  }, [refetch]);
 
   return (
     <SafeAreaView className="bg-primary h-full">

@@ -1,5 +1,5 @@
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomSearchBar from "@/components/SearchBar";
 import EmptyState from "@/components/EmptyState";
@@ -17,13 +17,13 @@ const Profile = () => {
 
   const { data: posts } = useAppwrite<Post[]>(() => getUserPosts(user.$id));
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     await signOut();
     setIsLoggedIn(false);
     setUser(null);
 
     router.replace("/sign-in");
-  };
+  }, [setIsLoggedIn, setUser]);
 
   return (
     <SafeAreaView className="bg-primary h-full">
